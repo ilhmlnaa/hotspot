@@ -68,6 +68,7 @@
                 </form>
                 <p class="info bt; background-color:#9ba1ab">Bhozar24</p>
 				<p><font color="#14a2fa"><center>Teknik Komputer Dan Jaringan</center</font></p>
+				<b><p><font color="#f71e3e"><center</u>Pergunakan Internet Dengan Bijak nak!</b></u></br></center></font></p>
             </div>
         </div>
     </div>
@@ -79,13 +80,13 @@ document.getElementById('title').innerHTML = hostname  + " > login";
 document.login.username.focus();
 
 var infologin = document.getElementById('infologin');
-infologin.innerHTML = "Masukkan NIS/username anda<br>kemudian klik login.";
+infologin.innerHTML = "Masukkan NISN/username anda<br>kemudian klik login.";
 
 // login page 2 mode by Laksamadi Guko
 var username = document.login.username;
 var password = document.login.password;
 
-username.placeholder = "Kode Voucher";
+username.placeholder = "NISN/username";
 
 // set password = username
 function setpass() {
@@ -101,9 +102,9 @@ username.onkeyup = setpass;
 function voucher() {
     username.focus();
     username.onkeyup = setpass;
-    username.placeholder = "Kode Voucher";
+    username.placeholder = "NISN/username";
     password.type = "hidden";
-    infologin.innerHTML = "Masukkan NIS/username anda<br>kemudian klik login.";
+    infologin.innerHTML = "Masukkan NISN/username anda<br>kemudian klik login.";
 }
 
 // change to member mode
