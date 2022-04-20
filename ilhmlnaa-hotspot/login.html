@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="title"></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="voucher()">
+    two other colors
+
+<!--<body class="lite">
+<body class="dark">-->
+
+
+
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+
+    <script src="/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif)
+    <div class="ie-fixMinHeight">
+        <div class="main">
+            <div class="wrap animated fadeIn">
+			   <img class="logo" src="img/logo.png">
+			
+			<b><p><font color="#ffff00"><center><marquee></u>Selamat Datang Di Jaringan Hotspot SMK AL HASRA, Silahkan Masukan Identitas Anda</b></u></br></marquee></center></font></p>
+				
+				<button id="btnvrc" class="tombol" onclick="voucher();">Siswa</button>
+				<button id="btnmem" class="tombol" onclick="member();">Guru</button>
+			
+                <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                    <input type="hidden" name="dst" value="$(link-orig)" />
+                    <input type="hidden" name="popup" value="true" />
+                    
+					<div class="info" id="infologin"></div>
+
+					$(if trial == 'yes')
+					<div class="info">Untuk Tamu <a style="text-decoration: underline; color:#fff;" href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">klik
+                    di sini</a></div>
+					$(endif)
+
+					$(if error)<div class="notice">$(error)</div>$(endif)
+
+                    <input name="username" type="text" value="$(username)" placeholder="Username" />
+                    <input name="password" type="password" placeholder="Password" />
+					
+                    <input type="submit" value="Connect" />
+
+                </form>
+                <p class="info bt; background-color:#9ba1ab">Bhozar24</p>
+				<p><font color="#14a2fa"><center>Teknik Komputer Dan Jaringan</center</font></p>
+            </div>
+        </div>
+    </div>
+	
+<script type="text/javascript">
+var hostname = window.location.hostname;
+document.getElementById('title').innerHTML = hostname  + " > login";
+
+document.login.username.focus();
+
+var infologin = document.getElementById('infologin');
+infologin.innerHTML = "Masukkan NIS/username anda<br>kemudian klik login.";
+
+// login page 2 mode by Laksamadi Guko
+var username = document.login.username;
+var password = document.login.password;
+
+username.placeholder = "Kode Voucher";
+
+// set password = username
+function setpass() {
+    var user = username.value
+    //user = user.toLowerCase();
+    username.value = user;
+    password.value = user;
+}
+
+username.onkeyup = setpass;
+
+// change to voucher mode
+function voucher() {
+    username.focus();
+    username.onkeyup = setpass;
+    username.placeholder = "Kode Voucher";
+    password.type = "hidden";
+    infologin.innerHTML = "Masukkan NIS/username anda<br>kemudian klik login.";
+}
+
+// change to member mode
+function member() {
+    username.focus();
+    username.onkeyup = "";
+    username.placeholder = "Username";
+    password.type = "password";
+    infologin.innerHTML = "Masukkan Username dan Password<br>kemudian klik login.";
+}
+</script>
+	
+</body>
+
+</html>
