@@ -35,9 +35,10 @@ $(endif)
         <div class="main">
             <div class="wrap">
                 $(if login-by == 'trial')
-                    <h1>Hi, trial user!</h1>
+                    <h1>Halo, Tamu</h1>
+					<center><font color="white"><h2>selamat menikmati akses internet</h2></font>
                 $(elif login-by != 'mac')
-                    <h1>Hi, $(username)!</h1>
+                    <h1>Halo, $(username)!</h1>
                 $(endif)                
 
                 <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
